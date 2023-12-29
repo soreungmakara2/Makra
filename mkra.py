@@ -70,7 +70,7 @@ def buildblock(size):
 
 def usage():
 	print '---------------------------------------------------'
-	print 'USAGE: python cat.py <url>'
+	print 'USAGE: python2 cat.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
 
@@ -97,7 +97,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print 'Response Code 500'
+			print '===> CAT Code 5555'
 			code=5555
 	except urllib2.URLError, e:
 			#print e.reason
@@ -139,7 +139,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- CAT Attack Started --"
+		print "<== CAT Attack Started ==>"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
