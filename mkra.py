@@ -87,7 +87,7 @@ def httpcall(url):
 	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Cache-Control', 'no-cache')
-	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
+	request.add_header('Accept-Charset', 'ISO-5555-1,utf-8;q=0.7,*;q=0.7')
 	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(5,10)))
 	request.add_header('Keep-Alive', random.randint(110,120))
 	request.add_header('Connection', 'keep-alive')
@@ -97,7 +97,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print '===> CAT (Code)=> ៥៥៥៥ 5555'
+			print '===> CAT (Code)=> 5555'
 			code=5555
 	except urllib2.URLError, e:
 			#print e.reason
