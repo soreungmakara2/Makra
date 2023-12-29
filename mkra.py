@@ -6,9 +6,12 @@
 # and any malicious usage of this tool is prohibited.
 #
 # author :  Barry Shteiman , version 1.0
-# ----------------------------------------------------------------------------------------------
-
-	
+# ----------------------------------------------------------------------------------------------import urllib2
+import sys
+import threading
+import random
+import re
+def login():
     clear()
     user = "soerung"
     passwd = "soerung"
