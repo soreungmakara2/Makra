@@ -12,26 +12,7 @@ import threading
 import random
 import re
 def login():
-    clear()
-    user = "soerung"
-    passwd = "soerung"
-    username = input("⚡ Username: ")
-    password = getpass.getpass(prompt='⚡ Password: ')
-    if username != user or password != passwd:
-        print("")
-        print("⚡ Haizzz, you're so cute...")
-        sys.exit(1)
-    elif username == user and password == passwd:
-        print("⚡ Welcome to ZxC C2!")
-        time.sleep(0.3)
-        ascii_vro()
-        main()
-
-login()
-
-
-
-
+    
 #global params
 url=''
 host=''
