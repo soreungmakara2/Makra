@@ -79,7 +79,7 @@ def usage():
 def httpcall(url):
 	useragent_list()
 	referer_list()
-	code=0
+	code=5
 	if url.count("?")>0:
 		param_joiner="&"
 	else:
@@ -124,7 +124,7 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while flag==0:
-			if (previous+100<request_counter) & (previous<>request_counter):
+			if (previous+5555<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
