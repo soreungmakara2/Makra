@@ -143,7 +143,7 @@ else:
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
-		url = sys.argv[5]
+		url = sys.argv[2]
 		if url.count("/")==5:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
