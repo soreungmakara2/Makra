@@ -97,7 +97,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print '===> CAT (Code)=> 5555'
+			print '===> CAT (Code)=> 5555 ៥៥៥៥'
 			code=5555
 	except urllib2.URLError, e:
 			#print e.reason
