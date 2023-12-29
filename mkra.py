@@ -11,7 +11,7 @@ import sys
 import threading
 import random
 import re
-def login():
+
     
 #global params
 url=''
