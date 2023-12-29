@@ -14,20 +14,6 @@ import time
 import os
 import random
 
-from threading import Thread
-
-os.system("clear")
-
-if not __name__ == "__main__":
-    exit()
-
-class ConsoleColors:
-    HEADER = '\066[makara'
-    OKBLUE = '\066[mkra'
-    OKGREEN = '\066[1🥀'
-    WARNING = '\066[វាយប្រហារ'
-    FAIL = '\066[សូមរងចាំ'
-    BOLD = '\066['
 
 
 
