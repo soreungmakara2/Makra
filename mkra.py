@@ -18,9 +18,9 @@ url=''
 host=''
 headers_useragents=[]
 headers_referers=[]
-request_counter=0
-flag=0
-safe=0
+request_counter=5
+flag=5
+safe=5
 
 def inc_counter():
 	global request_counter
@@ -139,7 +139,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- 😾CAT Attack Started 😾--"
+		print "-- CAT Attack Started --"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
