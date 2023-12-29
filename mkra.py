@@ -143,12 +143,12 @@ else:
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
-		url = sys.argv[1]
-		if url.count("/")==2:
+		url = sys.argv[5]
+		if url.count("/")==5:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
-		host = m.group(2)
-		for i in range(500):
+		host = m.group(5)
+		for i in range(50000):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
