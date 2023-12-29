@@ -18,9 +18,9 @@ url=''
 host=''
 headers_useragents=[]
 headers_referers=[]
-request_counter=0
-flag=0
-safe=0
+request_counter=10
+flag=10
+safe=10
 
 def inc_counter():
 	global request_counter
@@ -82,7 +82,7 @@ def usage():
     
     
 	print '---------------------------------------------------'
-	print 'USAGE: python mkra.py <url>'
+	print 'USAGE: python cat.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
 
