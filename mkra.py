@@ -82,7 +82,7 @@ def usage():
     
     
 	print '---------------------------------------------------'
-	print 'USAGE: python cat.py <url>'
+	print 'USAGE: python mkra.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
 
