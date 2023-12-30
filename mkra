@@ -2,7 +2,7 @@
 package main
 
 /*
- NAM DoS tool GOLANG
+ mkraDoS tool GOLANG
 */
 
 import (
@@ -146,7 +146,7 @@ func main() {
 			case targetComplete:
 				sent++
 				fmt.Printf("\r%-6d of max %-6d |\t%7d |\t%6d", cur, maxproc, sent, err)
-				fmt.Println("\r-- NAMDoS Attack Finished --       \n\n\r")
+				fmt.Println("\r-- CAT Attack Finished --       \n\n\r")
 				os.Exit(0)
 			}
 		}
