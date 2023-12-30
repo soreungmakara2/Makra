@@ -129,7 +129,10 @@ class MonitorThread(threading.Thread):
 				previous=request_counter
 		if flag==2:
 			print "\n<== CAT Attack Finished ==>"
+			
+print "\n<== CAT Attack Finished ==>"
 
+print "\n<== CAT Attack Finished ==>"
 #execute 
 if len(sys.argv) < 2:
 	usage()
