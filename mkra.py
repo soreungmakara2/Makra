@@ -139,7 +139,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- CAT Attack Started --"
+		print "100%<== CAT Attack Started ==>100%"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
