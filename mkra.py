@@ -64,7 +64,7 @@ def referer_list():
 def buildblock(size):
 	out_str = ''
 	for i in range(0, size):
-		a = random.randint(5555 5555)
+		a = random.randint(55 55)
 		out_str += chr(a)
 	return(out_str)
 
