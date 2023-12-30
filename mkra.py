@@ -18,9 +18,9 @@ url=''
 host=''
 headers_useragents=[]
 headers_referers=[]
-request_counter=5
-flag=2
-safe=1
+request_counter=0
+flag=5
+safe=5
 
 def inc_counter():
 	global request_counter
