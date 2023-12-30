@@ -1,6 +1,4 @@
-
 import socket, threading, os, sys, random, ctypes, time
-
 delay=20
 psc=5000
 ux=3
