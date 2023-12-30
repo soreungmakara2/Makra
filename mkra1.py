@@ -83,7 +83,7 @@ def usage():
     
         print '______________________/\___/\____/\_______________'
 	print '---------------------------------------------------'
-	print 'USAGE: python2 cat.py <url>'
+	print 'USAGE: python2 mkra1.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
     
@@ -110,7 +110,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print '=========> (CAT) ===> Attack => 50000'
+			print '=====> (CAT) ===> Attack ==> 50000'
 			code=50000
 	except urllib2.URLError, e:
 			#print e.reason
@@ -152,7 +152,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- cat Attack Started --"
+		print "<== CAT ATTACK ==>"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
