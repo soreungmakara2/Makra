@@ -32,7 +32,7 @@ const (
 	targetComplete
 )
 
-// global params
+// mkra params
 var (
 	safe            bool     = false
 	headersReferers []string = []string{
