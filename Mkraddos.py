@@ -6,7 +6,7 @@ title = '''
                                                                     
  DDos python script | Script used for testing ddos | Ddos attack     
  Author: ___T7hM1___                                                
- Github: http://github.com/t7hm1/pyddos                             
+ Github:      https://github.com/soreungmakara2/Makra/blob/main/Mkraddos.py                
  Version:'''+version+''' 
 '''
 
@@ -343,7 +343,7 @@ def main():
 	parser = ArgumentParser(
         usage='./%(prog)s -t [target] -p [port] -t [number threads]',
         formatter_class=RawTextHelpFormatter,
-        prog='pyddos',
+        prog='mkra',
         description=cprint(title,'white',attrs=['bold']),
         epilog='''
 Example:
