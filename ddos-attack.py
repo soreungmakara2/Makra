@@ -29,7 +29,7 @@ port = input("Port       : ")
 port = int(port)
 
 os.system("clear")
-os.system("figlet Elsa-zlt DDos Attack")
+os.system("figlet MKRA DDos Attack")
 print("[                    ] 0% ")
 time.sleep(5)
 print("[=====               ] 25%")
