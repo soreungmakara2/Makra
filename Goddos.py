@@ -43,4 +43,4 @@ while True:
      sock.sendto(bytes, (ip,port))
      sent = sent + 1
      print "Sent %s packet to %s throught port:%d"%(sent,ip,port)
-     time.sleep((90-sd)/50)
+     time.sleep((1000-sd)/2000)
