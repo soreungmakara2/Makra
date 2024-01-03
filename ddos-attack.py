@@ -18,7 +18,7 @@ bytes = random._urandom(1490)
 #############
 
 os.system("clear")
-os.system("figlet Elsa-zlt DDos Attack")
+os.system("figlet MKRA DDos Attack")
 print()
 print("Author   : mkra")
 print("github   :https://github.com/soreungmakara2/Makra ")
