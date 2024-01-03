@@ -1,5 +1,10 @@
 # Makra
 Makra
 #ddos
-pip2 install Queue
-pip2 install requests
+apt update
+apt upgrade
+apt install git -y
+apt install python2
+https://github.com/soreungmakara2/Makra
+cd Makra
+ls
