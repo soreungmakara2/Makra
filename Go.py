@@ -24,7 +24,7 @@ os.system("figlet DDos Attack")
 print " "
 print "/---------------------------------------------------\ ::::::::"
 print "|   Author          : mkra            |"
-print "|   Author github   :  https://github.com/soreungmakara2/Makra
+print "|   Author github   :  https://github.com/soreungmakara2/Makra"
 print "|             
 print "|   Edition         : V1.0.0                        |"
 print "\---------------------------------------------------/"
