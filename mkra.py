@@ -77,12 +77,6 @@ def useragent_list():
 
 
 
-
-
-
-
-
-
 # generates a referer array
 def referer_list():
 	global headers_referers
