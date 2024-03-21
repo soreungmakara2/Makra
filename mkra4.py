@@ -1,7 +1,7 @@
 
 ##################################################################################
 
-# sha3rawi-DDOS - HTTP Unbearable Load script
+# cat-DDOS - HTTP Unbearable Load script
 
 # this script is for educational purpose only.
 
@@ -183,7 +183,7 @@ def httpcall(url):
 
 			set_flag(1)
 
-			print 'Response Code 500'
+			print ' ការឆ្លើយតប ដោយឆ្មា ៥៥៥ '
 
 			code=555
 
