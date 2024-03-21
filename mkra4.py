@@ -183,7 +183,7 @@ def httpcall(url):
 
 			set_flag(1)
 
-			print ' ការឆ្លើយតប ដោយឆ្មា 555'
+			print ' Response By code Cat 555 '
 
 			code=555
 
