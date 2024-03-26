@@ -18,7 +18,7 @@ L = '\033[1;37m' #ابيض
 #-----------
 # -- LOGO --#
 
-logo1 = pyfiglet.figlet_format('X',font= '3-d')
+logo1 = pyfiglet.figlet_format('M',font= '3-d')
 logo2 = pyfiglet.figlet_format(text='D D o S',font='3-d')
 print(f'{F}{logo1}\n{F}{logo2}')
 
@@ -31,9 +31,9 @@ def text(string):
         sleep(10 / 1000)
 
 text(f'''{L}[*] Version : 2.1.1
-[*] Telegram : @BO_NND
-[*] Telegram : @SpidrX
-[*] Telegram : @hack_onlaain
+[*] Telegram : t.me//Mkraok
+[*] Telegram : t.me//Mkraok
+[*] Telegram : t.me//Mkraok
 {X}* Note : Use VPN.
 ''')
 print(f'{B}-----------------------')
