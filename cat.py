@@ -9,7 +9,6 @@
 from queue import Queue
 from optparse import OptionParser
 import time,sys,socket,threading,logging,urllib.request,random
-
 def user_agent():
 	global uagent  
         uagent=[]
