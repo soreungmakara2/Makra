@@ -125,7 +125,7 @@ def usage():
 	print 'Anonymous TEAM '
 	print 'New loaded Botnets: 39,445,657'
 	print 'Usage: SadAttack (url)'
-	print 'Example: Sadattack.py http://luthi.co.il/'
+	print 'Example: sad.py http://luthi.co.il/'
 	print "\a"
 print \
 """                                                       
