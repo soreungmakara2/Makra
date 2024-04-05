@@ -61,7 +61,7 @@ def buildblock(size):
 
 def usage():
 	print '---------------------------------------------------'
-	print 'USAGE: python m60.py <url>'
+	print 'USAGE: python3 m60.py <url>'
 	print 'The m60 was one governamental ddos the distribuition of this is limited Created by : Anonymous'
 	print "\a"
 print \
